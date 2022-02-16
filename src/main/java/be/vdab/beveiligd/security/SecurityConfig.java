@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication().dataSource(dataSource)
                 //zoek user en authorities igv tables die een andere naamgeving en/of geen default structuur hebben:
                 .usersByUsernameQuery(
+                        //select joe uit je database, geef weer als username/password/enabled
                         """
                         select naam as username, paswoord as password, actief as enabled
                         from gebruikers where naam = ?

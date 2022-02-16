@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inloggen</title>
+    <link rel="stylesheet" th:href="@{/css/security.css}"></link>
+</head>
+<body>
+<h1>Inloggen</h1>
+<form th:action="@{/login}" method="post">
+<!--name attributen zijn hier van groot belang, we ontvangen geen form-->
+    <input name="username" required autofocus placeholder="Gebruikersnaam">
+    <input name="password" type="password" required placeholder="Paswoord">
+    <button>Inloggen</button>
+</form>
+<!--Spring Security geeft een redirect terug naar de inlogpagina met een "error" parameter i.g.v. verekeerde userid/pw-->
+<div th:if="${param.error}">Verkeerde gebruikersnaam of paswoord</div>
+</body>
+</html>
